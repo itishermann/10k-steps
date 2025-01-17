@@ -5,7 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ad8a478-c997-4635-b4f3-12a35017d52a" name="Changes" comment="initial scaffold">
+      <change afterPath="$PROJECT_DIR$/src/components/ui/spinner.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/card.stories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/dropdown-menu.stories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/input.stories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/label.stories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stories/spinner.stories.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.storybook/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.storybook/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.storybook/preview.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.storybook/preview.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/directory-structure.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stories/Button.stories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/stories/button.stories.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +56,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/hermann/dev/side-projects/10k-steps/src/stories",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -56,6 +70,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/stories" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="storybook" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -91,7 +110,7 @@
       <workItem from="1737118174079" duration="531000" />
       <workItem from="1737118829589" duration="283000" />
       <workItem from="1737122365135" duration="127000" />
-      <workItem from="1737123672702" duration="2215000" />
+      <workItem from="1737123672702" duration="4616000" />
     </task>
     <task id="LOCAL-00001" summary="initial scaffold">
       <option name="closed" value="true" />
