@@ -4,21 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ad8a478-c997-4635-b4f3-12a35017d52a" name="Changes" comment="initial scaffold">
-      <change afterPath="$PROJECT_DIR$/src/components/ui/spinner.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stories/card.stories.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stories/dropdown-menu.stories.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stories/input.stories.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stories/label.stories.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stories/spinner.stories.tsx" afterDir="false" />
+    <list default="true" id="9ad8a478-c997-4635-b4f3-12a35017d52a" name="Changes" comment="feat(docs): add card input and label components">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.storybook/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.storybook/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.storybook/preview.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.storybook/preview.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/directory-structure.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/molecules/theme-provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/molecules/theme-provider.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ui/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Button.stories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/stories/button.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stories/button.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/stories/button.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +56,7 @@
     "nodejs.jest.jest_package": "/Users/hermann/dev/side-projects/10k-steps/node_modules/jest",
     "nodejs_interpreter_path": "/Users/hermann/.local/share/mise/installs/node/22.13.0/bin/node",
     "nodejs_package_manager_path": "pnpm",
+    "npm.dev.executor": "Run",
     "npm.storybook.executor": "Run",
     "settings.editor.selected.configurable": "vcs.Git",
     "ts.external.directory.path": "/Users/hermann/dev/side-projects/10k-steps/node_modules/typescript/lib",
@@ -75,7 +68,17 @@
       <recent name="$PROJECT_DIR$/src/stories" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="storybook" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -88,6 +91,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.storybook" />
       </list>
     </recent_temporary>
@@ -110,7 +114,9 @@
       <workItem from="1737118174079" duration="531000" />
       <workItem from="1737118829589" duration="283000" />
       <workItem from="1737122365135" duration="127000" />
-      <workItem from="1737123672702" duration="4616000" />
+      <workItem from="1737123672702" duration="6125000" />
+      <workItem from="1737295790506" duration="1048000" />
+      <workItem from="1737372301822" duration="974000" />
     </task>
     <task id="LOCAL-00001" summary="initial scaffold">
       <option name="closed" value="true" />
@@ -120,7 +126,23 @@
       <option name="project" value="LOCAL" />
       <updated>1737126015400</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat(docs): add stories to ui components">
+      <option name="closed" value="true" />
+      <created>1737134033587</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1737134033587</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat(docs): add card input and label components">
+      <option name="closed" value="true" />
+      <created>1737134050479</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1737134050479</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,6 +161,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial scaffold" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial scaffold" />
+    <MESSAGE value="feat(docs): add stories to ui components" />
+    <MESSAGE value="feat(docs): add card input and label components" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(docs): add card input and label components" />
   </component>
 </project>

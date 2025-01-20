@@ -29,6 +29,9 @@ importers:
       dexie-react-hooks:
         specifier: ^1.1.7
         version: 1.1.7(@types/react@19.0.7)(dexie@4.0.11)(react@19.0.0)
+      leaflet:
+        specifier: ^1.9.4
+        version: 1.9.4
       lucide-react:
         specifier: ^0.472.0
         version: 0.472.0(react@19.0.0)
@@ -44,6 +47,9 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
+      react-leaflet:
+        specifier: 5.0.0-rc.2
+        version: 5.0.0-rc.2(leaflet@1.9.4)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-obsidian:
         specifier: ^2.15.0
         version: 2.15.0(react@19.0.0)
@@ -1606,6 +1612,13 @@ packages:
 
   '@radix-ui/rect@1.1.0':
     resolution: {integrity: sha512-A9+lCBZoaMJlVKcRBz2YByCG+Cp2t6nAnMnNba+XiWxnj6r4JUFqfsgwocMBZU9LPtdxC6wB56ySYpc7LQIoJg==}
+
+  '@react-leaflet/core@3.0.0':
+    resolution: {integrity: sha512-3EWmekh4Nz+pGcr+xjf0KNyYfC3U2JjnkWsh0zcqaexYqmmB5ZhH37kz41JXGmKzpaMZCnPofBBm64i+YrEvGQ==}
+    peerDependencies:
+      leaflet: ^1.9.0
+      react: ^19.0.0
+      react-dom: ^19.0.0
 
   '@rollup/rollup-android-arm-eabi@4.30.1':
     resolution: {integrity: sha512-pSWY+EVt3rJ9fQ3IqlrEUtXh3cGqGtPDH1FQlNZehO2yYxCHEX1SPsz1M//NXwYfbTlcKr9WObLnJX9FsS9K1Q==}
@@ -3587,6 +3600,9 @@ packages:
     resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
     engines: {node: '>=6'}
 
+  leaflet@1.9.4:
+    resolution: {integrity: sha512-nxS1ynzJOmOlHp+iL3FyWqK89GtNL8U8rvlMOsQdTTssxZwCXh8N2NB3GDQOL+YR3XnWyZAxwQixURb+FA74PA==}
+
   leven@3.1.0:
     resolution: {integrity: sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==}
     engines: {node: '>=6'}
@@ -4170,6 +4186,13 @@ packages:
 
   react-is@18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
+
+  react-leaflet@5.0.0-rc.2:
+    resolution: {integrity: sha512-1xQGYG9mEIW+nfkQhqgHImwUuB1UDlnzYFSzv6PrBFDBeYrFmv0BbpwpNAFdJg/UQ2yz5UZSL7ZwlUxjwb8MZw==}
+    peerDependencies:
+      leaflet: ^1.9.0
+      react: ^19.0.0
+      react-dom: ^19.0.0
 
   react-obsidian@2.15.0:
     resolution: {integrity: sha512-4QW3CqIn7HCcAHLJyHd2cqmqNOLBvPKRsDqO/u9wx+MvVppgnPyX4GDJpKWwlGerV8Z4ywWbXWQ/jXEKTXnl4w==}
@@ -6682,6 +6705,12 @@ snapshots:
 
   '@radix-ui/rect@1.1.0': {}
 
+  '@react-leaflet/core@3.0.0(leaflet@1.9.4)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+    dependencies:
+      leaflet: 1.9.4
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+
   '@rollup/rollup-android-arm-eabi@4.30.1':
     optional: true
 
@@ -9177,6 +9206,8 @@ snapshots:
 
   kleur@3.0.3: {}
 
+  leaflet@1.9.4: {}
+
   leven@3.1.0: {}
 
   lilconfig@3.1.3: {}
@@ -9757,6 +9788,13 @@ snapshots:
   react-is@17.0.2: {}
 
   react-is@18.3.1: {}
+
+  react-leaflet@5.0.0-rc.2(leaflet@1.9.4)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+    dependencies:
+      '@react-leaflet/core': 3.0.0(leaflet@1.9.4)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      leaflet: 1.9.4
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
 
   react-obsidian@2.15.0(react@19.0.0):
     dependencies:
