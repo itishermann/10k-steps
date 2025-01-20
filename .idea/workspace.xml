@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ad8a478-c997-4635-b4f3-12a35017d52a" name="Changes" comment="feat(docs): add card input and label components">
+    <list default="true" id="9ad8a478-c997-4635-b4f3-12a35017d52a" name="Changes" comment="feat(theme): fix dark theme hydratation warning when server rendering">
+      <change afterPath="$PROJECT_DIR$/src/components/molecules/map/control.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/molecules/theme-provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/molecules/theme-provider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/button.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/stories/button.stories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components.json" beforeDir="false" afterPath="$PROJECT_DIR$/components.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +118,7 @@
       <workItem from="1737122365135" duration="127000" />
       <workItem from="1737123672702" duration="6125000" />
       <workItem from="1737295790506" duration="1048000" />
-      <workItem from="1737372301822" duration="974000" />
+      <workItem from="1737372301822" duration="3623000" />
     </task>
     <task id="LOCAL-00001" summary="initial scaffold">
       <option name="closed" value="true" />
@@ -142,7 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737134050479</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat(theme): fix dark theme hydratation warning when server rendering">
+      <option name="closed" value="true" />
+      <created>1737374630865</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1737374630865</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +173,7 @@
     <MESSAGE value="initial scaffold" />
     <MESSAGE value="feat(docs): add stories to ui components" />
     <MESSAGE value="feat(docs): add card input and label components" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(docs): add card input and label components" />
+    <MESSAGE value="feat(theme): fix dark theme hydratation warning when server rendering" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(theme): fix dark theme hydratation warning when server rendering" />
   </component>
 </project>
