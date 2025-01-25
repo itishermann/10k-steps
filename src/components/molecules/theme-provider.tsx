@@ -9,10 +9,16 @@ const NextThemesProvider = dynamic(
 	},
 );
 
+import { Toaster } from "@/components/atoms/sonner";
 // @ts-expect-error - This fixes the hydratation warning issue @see https://github.com/shadcn-ui/ui/issues/5552
 import type { ThemeProviderProps } from "next-themes/dist/types";
 import dynamic from "next/dynamic";
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-	return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
+	return (
+		<NextThemesProvider {...props}>
+			{children}
+			<Toaster richColors position="top-center" />
+		</NextThemesProvider>
+	);
 }
