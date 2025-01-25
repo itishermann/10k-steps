@@ -1,8 +1,9 @@
 import L from "leaflet";
-import React, {
-	createRef,
+import type React from "react";
+import {
 	type HTMLAttributes,
 	type ReactNode,
+	createRef,
 	useEffect,
 	useState,
 } from "react";

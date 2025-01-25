@@ -12,6 +12,7 @@ interface NumberInputProps {
 	disabled?: boolean;
 	className?: string;
 	id?: string;
+	hideControls?: boolean;
 }
 
 export function NumberInput({
@@ -21,6 +22,7 @@ export function NumberInput({
 	max = Number.POSITIVE_INFINITY,
 	step = 1,
 	disabled = false,
+	hideControls = false,
 	className = "",
 	id,
 }: NumberInputProps) {
@@ -47,14 +49,16 @@ export function NumberInput({
 
 	return (
 		<div className={`flex items-center space-x-2 ${className}`}>
-			<Button
-				variant="outline"
-				size="icon"
-				onClick={handleDecrement}
-				disabled={disabled || value <= min}
-			>
-				<Minus className="h-4 w-4" />
-			</Button>
+			{!hideControls && (
+				<Button
+					variant="outline"
+					size="icon"
+					onClick={handleDecrement}
+					disabled={disabled || value <= min}
+				>
+					<Minus className="h-4 w-4" />
+				</Button>
+			)}
 			<Input
 				id={id}
 				type="number"
@@ -66,14 +70,16 @@ export function NumberInput({
 				disabled={disabled}
 				className="w-20 text-center remove-arrow"
 			/>
-			<Button
-				variant="outline"
-				size="icon"
-				onClick={handleIncrement}
-				disabled={disabled || value >= max}
-			>
-				<Plus className="h-4 w-4" />
-			</Button>
+			{!hideControls && (
+				<Button
+					variant="outline"
+					size="icon"
+					onClick={handleIncrement}
+					disabled={disabled || value >= max}
+				>
+					<Plus className="h-4 w-4" />
+				</Button>
+			)}
 		</div>
 	);
 }
