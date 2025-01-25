@@ -3,7 +3,7 @@ import { Label } from "@/components/atoms/label";
 import { NumberInput } from "@/components/atoms/number-input";
 import { RadioGroup, RadioGroupItem } from "@/components/atoms/radio-group";
 import { db } from "@/lib/db";
-import { useCopyToClipboard } from "@/lib/use-copy-to-clipboard";
+import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard";
 import { calculateStepLength } from "@/lib/utils";
 import { Save } from "lucide-react";
 import { useState } from "react";

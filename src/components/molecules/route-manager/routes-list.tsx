@@ -1,10 +1,22 @@
 import { RouteItem } from "@/components/molecules/route-manager/route-item";
-import { appStore } from "@/lib/stores/app.store";
+import { db } from "@/lib/db";
+import type { Route } from "@/lib/entities/route";
+import { useLiveQuery } from "dexie-react-hooks";
 
 export function RoutesList() {
-	const paths = appStore.use.paths();
+	const routes = useLiveQuery(
+		() => db.route.orderBy("createdAt").reverse().toArray(),
+		[],
+		[] as Route[],
+	);
 
-	const mappedPaths = paths.map((p, index) => <RouteItem data={p} key={p} />);
+	if (!routes || routes.length === 0) {
+		return <p className="text-center">No routes saved yet</p>;
+	}
 
-	return <div className="flex flex-col gap-2">{mappedPaths}</div>;
+	const mapped = routes.map((r) => (
+		<RouteItem data={r} key={`route-${r.id}`} />
+	));
+
+	return <div className="flex flex-col gap-2">{mapped}</div>;
 }

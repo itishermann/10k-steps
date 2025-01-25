@@ -1,25 +1,22 @@
+import type { Route } from "@/lib/entities/route";
 import L from "leaflet";
 import { useMemo, useState } from "react";
 import { useMap } from "react-leaflet";
 
 interface RouteItemProps {
-	/**
-	 * GPX data
-	 */
-	data: string;
-	color?: string;
+	data: Route;
 }
 
-export function RouteItem({ data, color = "red" }: RouteItemProps) {
+export function RouteItem({ data: { path: gpxPath, color } }: RouteItemProps) {
 	const [isShown, setIsShown] = useState(false);
 	const map = useMap();
 	const gpx = useMemo(
 		() =>
-			new L.GPX(data, {
+			new L.GPX(gpxPath, {
 				async: false,
 				polyline_options: { color },
 			}),
-		[data, color],
+		[gpxPath, color],
 	);
 
 	const onView = () => {
