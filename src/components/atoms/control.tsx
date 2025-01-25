@@ -9,7 +9,7 @@ import React, {
 import { useMap } from "react-leaflet";
 
 interface Props {
-	position: L.ControlPosition;
+	position: L.ControlPosition | "bottomcenter" | "topcenter";
 	children?: ReactNode;
 	container?: HTMLAttributes<HTMLDivElement>;
 	prepend?: boolean;
@@ -20,6 +20,8 @@ const POSITION_CLASSES = {
 	bottomright: "leaflet-bottom leaflet-right",
 	topleft: "leaflet-top leaflet-left",
 	topright: "leaflet-top leaflet-right",
+	bottomcenter: "leaflet-bottom",
+	topcenter: "leaflet-top",
 };
 
 export function Control(props: Props) {
@@ -48,6 +50,8 @@ export function Control(props: Props) {
 	 * Whenever the position is changed, go ahead and get the container of the map and the first
 	 * instance of the position class in that map container
 	 */
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: This is a false positive
 	useEffect(() => {
 		const mapContainer = map.getContainer();
 		const targetDiv = mapContainer.getElementsByClassName(positionClass);

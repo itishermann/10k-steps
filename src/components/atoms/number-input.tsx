@@ -64,7 +64,7 @@ export function NumberInput({
 				max={max}
 				step={step}
 				disabled={disabled}
-				className="w-20 text-center"
+				className="w-20 text-center remove-arrow"
 			/>
 			<Button
 				variant="outline"

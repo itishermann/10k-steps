@@ -1,10 +1,17 @@
-import { Button } from "@/components/atoms/button";
 import { Label } from "@/components/atoms/label";
 import { NumberInput } from "@/components/atoms/number-input";
-import { Save } from "lucide-react";
-import * as React from "react";
+import { RadioGroup, RadioGroupItem } from "@/components/atoms/radio-group";
+import { calculateStepLength } from "@/lib/utils";
+import { useMemo, useState } from "react";
 
 export function EstimateStepLength() {
+	const [height, setHeight] = useState<number>(180);
+	const [gender, setGender] = useState<string>("female");
+
+	const stepLength = useMemo(
+		() => calculateStepLength(height, gender as "male" | "female"),
+		[height, gender],
+	);
 	return (
 		<div>
 			<div className="space-y-2 border-t pt-4">
@@ -25,9 +32,32 @@ export function EstimateStepLength() {
 			<div className="grid gap-2">
 				<div className="grid grid-cols-4 items-center gap-4">
 					<Label htmlFor="height">Height</Label>
-					<NumberInput id="height" className="col-span-3" />
+					<NumberInput
+						id="height"
+						className="col-span-3"
+						value={height}
+						onChange={setHeight}
+					/>
 				</div>
+				<RadioGroup
+					className="grid grid-cols-2 items-center gap-2"
+					onValueChange={setGender}
+					defaultValue={gender}
+				>
+					<div className="items-center space-x-2 col-span-1">
+						<RadioGroupItem value="female" id="female" />
+						<Label htmlFor="female">Female</Label>
+					</div>
+					<div className="items-center space-x-2 col-span-1">
+						<RadioGroupItem value="male" id="male" />
+						<Label htmlFor="male">Male</Label>
+					</div>
+				</RadioGroup>
 			</div>
+			<dl className="text-center mt-4">
+				<dd className="text-4xl font-bold">&asymp;{stepLength.toFixed(2)}</dd>
+				<dt>step length (cm)</dt>
+			</dl>
 		</div>
 	);
 }

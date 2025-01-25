@@ -4,9 +4,9 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/atoms/card";
+import { Control } from "@/components/atoms/control";
 import { ColorModeToggle } from "@/components/molecules/color-mode-toggle";
 import { ConfigButton } from "@/components/molecules/configuration/config-button";
-import { Control } from "@/components/molecules/map/control";
 
 export function AppControl() {
 	return (
@@ -27,7 +27,9 @@ export function AppControl() {
 						</div>
 					</CardTitle>
 				</CardHeader>
-				<CardContent className="overflow-y-auto max-h-[90vh]"></CardContent>
+				<CardContent className="overflow-y-auto max-h-[90vh]">
+					<p>content</p>
+				</CardContent>
 			</Card>
 		</Control>
 	);
