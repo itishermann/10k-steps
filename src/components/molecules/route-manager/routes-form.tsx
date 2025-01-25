@@ -6,7 +6,7 @@ import { useRoutingService } from "@/lib/hooks/use-routing-service";
 import type { Point } from "@/lib/routing-client";
 import { liveQuery } from "dexie";
 import { LocateFixed, RefreshCcw } from "lucide-react";
-import { type FormEvent, useEffect, useState } from "react";
+import { type FormEvent, useCallback, useEffect, useState } from "react";
 import { useMap, useMapEvent } from "react-leaflet";
 import { toast } from "sonner";
 
@@ -37,12 +37,15 @@ export function RoutesForm() {
 		}
 	};
 
-	const refreshLocation = () =>
-		map.locate({
-			setView: true,
-			maxZoom: 13,
-			enableHighAccuracy: true,
-		});
+	const refreshLocation = useCallback(
+		() =>
+			map.locate({
+				setView: true,
+				maxZoom: 13,
+				enableHighAccuracy: true,
+			}),
+		[map],
+	);
 
 	useMapEvent("locationfound", (e) =>
 		setStartPoint({
@@ -59,7 +62,7 @@ export function RoutesForm() {
 				c?.value && setStepLength(Number.parseFloat(c?.value?.toString())),
 		});
 		return () => sub.unsubscribe();
-	}, []);
+	}, [refreshLocation]);
 
 	return (
 		<form onSubmit={onSubmit} className="grid gap-1 grid-cols-7">

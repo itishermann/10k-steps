@@ -10,16 +10,16 @@ export default function Home() {
 	return (
 		<main className="h-screen w-screen">
 			<MapContainer
-				center={[51.505, -0.09]}
+				center={[45.552429, 6.45343]}
 				zoom={13}
-				scrollWheelZoom
+				scrollWheelZoom={false}
 				className="h-full w-screen"
 			>
 				<TileLayer
 					attribution='&copy; <a target="_blank" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Built by <a target="_blank" href="https://itishermann.me">Hermann Kao</a>'
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 				/>
-				<Marker position={[51.505, -0.09]}>
+				<Marker position={[45.552429, 6.45343]}>
 					<Popup>
 						A pretty CSS3 popup. <br /> Easily customizable.
 					</Popup>

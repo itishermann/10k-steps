@@ -55,6 +55,7 @@ export function NumberInput({
 					size="icon"
 					onClick={handleDecrement}
 					disabled={disabled || value <= min}
+					type="button"
 				>
 					<Minus className="h-4 w-4" />
 				</Button>
@@ -76,6 +77,7 @@ export function NumberInput({
 					size="icon"
 					onClick={handleIncrement}
 					disabled={disabled || value >= max}
+					type="button"
 				>
 					<Plus className="h-4 w-4" />
 				</Button>

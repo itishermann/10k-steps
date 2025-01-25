@@ -3,7 +3,7 @@ import { RoutesList } from "@/components/molecules/route-manager/routes-list";
 
 export function RoutesManager() {
 	return (
-		<div>
+		<div className="flex flex-col gap-2">
 			<RoutesForm />
 			<RoutesList />
 		</div>
