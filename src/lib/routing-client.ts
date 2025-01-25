@@ -25,29 +25,16 @@ export class RoutingClient {
 	 * @param lat
 	 * @param lng
 	 * @param length - length in meters
-	 * @param count - number of alternative routes.
 	 */
-	async getLoopedDirections(
-		{ lat, lng }: Point,
-		length: number,
-		count: number,
-	) {
+	async getLoopedDirections({ lat, lng }: Point, length: number) {
 		if (!this.apiKey) {
 			throw new Error("ORS API key is not set");
 		}
-		return await this.ors.getDirections(
+		const res = await this.ors.getDirections(
 			Profile.FOOT_WALKING,
 			DirectionsFormat.GPX,
 			{
 				coordinates: [[lng, lat]],
-				alternative_routes: {
-					// Target number of alternative routes to compute. Service returns up to this number of routes that fulfill the share-factor and weight-factor constraints.
-					target_count: count,
-					// Maximum factor by which route weight may diverge from the optimal route. The value of 1.4 means alternatives can be up to 1.4 times longer (costly) than the optimal route.
-					weight_factor: 0,
-					// Maximum fraction of the route that alternatives may share with the optimal route. The default value of 0.6 means alternatives can share up to 60% of path segments with the optimal route.
-					share_factor: 0.6,
-				},
 				options: {
 					round_trip: {
 						// The target length of the route in meters (note that this is a preferred value, but results may be different).
@@ -60,6 +47,11 @@ export class RoutingClient {
 				},
 			},
 		);
+		if (typeof res !== "string") {
+			// @ts-expect-error - typings are incorrect
+			throw new Error((res.error as any).message);
+		}
+		return res;
 	}
 }
 
