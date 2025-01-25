@@ -1,6 +1,7 @@
 import { Conf } from "@/lib/entities/conf";
 import { Route } from "@/lib/entities/route";
 import Dexie, { type EntityTable } from "dexie";
+import { uuidv7 } from "uuidv7";
 
 export class AppDatabase extends Dexie {
 	conf!: EntityTable<
@@ -17,8 +18,8 @@ export class AppDatabase extends Dexie {
 	constructor() {
 		super("tenKStepsDB", { autoOpen: true });
 		this.version(1).stores({
-			conf: "name, createdAt, updatedAt",
-			route: "++id, stepLength, targetAmountOfSteps, createdAt",
+			conf: "&name, createdAt, updatedAt",
+			route: "&id, stepLength, targetAmountOfSteps, createdAt, updatedAt",
 		});
 		this.conf.mapToClass(Conf);
 		this.route.mapToClass(Route);
