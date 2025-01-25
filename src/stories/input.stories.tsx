@@ -5,7 +5,7 @@ import { Input } from "@/components/atoms/input";
 import { Label } from "@/components/atoms/label";
 
 const meta: Meta<typeof Input> = {
-	title: "ui/Input",
+	title: "atoms/Input",
 	component: Input,
 	tags: ["autodocs"],
 	argTypes: {},

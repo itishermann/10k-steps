@@ -9,7 +9,7 @@ import {
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Card> = {
-	title: "ui/Card",
+	title: "atoms/Card",
 	component: Card,
 	tags: ["autodocs"],
 	argTypes: {},

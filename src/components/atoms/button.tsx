@@ -101,7 +101,7 @@ const Button = React.forwardRef<
 					iconPlacement === "left" &&
 					(effect === "expandIcon" ? (
 						<div className="w-0 translate-x-[0%] pr-0 opacity-0 transition-all duration-200 group-hover:w-5 group-hover:translate-x-100 group-hover:pr-2 group-hover:opacity-100">
-							{loading ? (
+							{loading && size !== "icon" ? (
 								<Loader2 className="mr-2 h-5 w-5 animate-spin" />
 							) : (
 								<Icon />
@@ -112,20 +112,26 @@ const Button = React.forwardRef<
 					) : (
 						<Icon />
 					))}
-				{loading && !Icon && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
-				<Slottable>{children}</Slottable>
+				{loading && size !== "icon" && !Icon && (
+					<Loader2 className="mr-2 h-5 w-5 animate-spin" />
+				)}
+				{size === "icon" && loading ? (
+					<Loader2 className="h-5 w-5 animate-spin" />
+				) : (
+					<Slottable>{children}</Slottable>
+				)}
 				{Icon &&
 					iconPlacement === "right" &&
 					(effect === "expandIcon" ? (
 						<div className="w-0 translate-x-[100%] pl-0 opacity-0 transition-all duration-200 group-hover:w-5 group-hover:translate-x-0 group-hover:pl-2 group-hover:opacity-100">
-							{loading ? (
-								<Loader2 className="mr-2 h-5 w-5 animate-spin" />
+							{loading && size !== "icon" ? (
+								<Loader2 className="ml-2 h-5 w-5 animate-spin" />
 							) : (
 								<Icon />
 							)}
 						</div>
 					) : loading ? (
-						<Loader2 className="mr-2 h-5 w-5 animate-spin" />
+						<Loader2 className="ml-2 h-5 w-5 animate-spin" />
 					) : (
 						<Icon />
 					))}

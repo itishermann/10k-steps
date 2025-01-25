@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Mail } from "lucide-react";
 
 const meta: Meta<typeof Button> = {
-	title: "ui/Button",
+	title: "atoms/Button",
 	component: Button,
 	tags: ["autodocs"],
 	argTypes: {

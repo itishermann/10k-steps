@@ -33,7 +33,7 @@ import {
 } from "@/components/atoms/dropdown-menu";
 
 const meta: Meta<typeof DropdownMenu> = {
-	title: "ui/DropdownMenu",
+	title: "atoms/DropdownMenu",
 	component: DropdownMenu,
 	tags: ["autodocs"],
 	argTypes: {},
