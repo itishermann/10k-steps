@@ -3,8 +3,16 @@ import { Route } from "@/lib/entities/route";
 import Dexie, { type EntityTable } from "dexie";
 
 export class AppDatabase extends Dexie {
-	conf!: EntityTable<Conf, "name">;
-	route!: EntityTable<Route, "id">;
+	conf!: EntityTable<
+		Conf,
+		"name",
+		Omit<Conf, "createdAt" | "updatedAt" | "table">
+	>;
+	route!: EntityTable<
+		Route,
+		"id",
+		Omit<Route, "createdAt" | "updatedAt" | "table">
+	>;
 
 	constructor() {
 		super("tenKStepsDB", { autoOpen: true });
@@ -15,20 +23,28 @@ export class AppDatabase extends Dexie {
 		this.conf.mapToClass(Conf);
 		this.route.mapToClass(Route);
 
+		// @ts-expect-error - the typings are incorrect
 		this.conf.hook("creating", (_, obj) => {
 			obj.createdAt = new Date();
 			obj.updatedAt = null;
+			return obj;
 		});
-		this.conf.hook("updating", (_, __, obj) => {
-			obj.updatedAt = new Date();
-		});
+		this.conf.hook("updating", (changes, _, obj) => ({
+			...obj,
+			...changes,
+			updatedAt: new Date(),
+		}));
+		// @ts-expect-error - the typings are incorrect
 		this.route.hook("creating", (_, obj) => {
 			obj.createdAt = new Date();
 			obj.updatedAt = null;
+			return obj;
 		});
-		this.route.hook("updating", (_, __, obj) => {
-			obj.updatedAt = new Date();
-		});
+		this.route.hook("updating", (changes, _, obj) => ({
+			...obj,
+			...changes,
+			updatedAt: new Date(),
+		}));
 	}
 }
 

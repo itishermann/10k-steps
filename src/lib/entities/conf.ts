@@ -3,7 +3,7 @@ import { Entity } from "dexie";
 
 export class Conf extends Entity<AppDatabase> {
 	name!: string;
-	value!: number;
+	value!: number | string;
 	createdAt: Date = new Date();
 	updatedAt: Date | null = null;
 }

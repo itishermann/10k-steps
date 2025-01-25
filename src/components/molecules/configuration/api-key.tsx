@@ -1,9 +1,27 @@
 import { Button } from "@/components/atoms/button";
 import { Input } from "@/components/atoms/input";
 import { Label } from "@/components/atoms/label";
+import { db } from "@/lib/db";
 import { Save } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
 
 export function ApiKey() {
+	const [apiKey, setApiKey] = useState<string>("");
+
+	const handleSaveAsDefault = async () => {
+		const toastId = "save-api-key";
+		toast.loading("Saving api key...", { id: toastId });
+		try {
+			await db.conf.put({ value: apiKey, name: "orsApiKey" });
+			toast.success("Saved api key", { id: toastId });
+		} catch (e) {
+			toast.error("Failed to save api key", {
+				id: toastId,
+				description: (e as Error).message ?? "Unknown error",
+			});
+		}
+	};
 	return (
 		<div>
 			<div className="space-y-2">
@@ -28,8 +46,16 @@ export function ApiKey() {
 						className="col-span-2"
 						type="password"
 						autoComplete="off"
+						value={apiKey}
+						onChange={(e) => setApiKey(e.target.value)}
+						minLength={5}
 					/>
-					<Button variant="default" size="icon" className="col-span-1">
+					<Button
+						variant="default"
+						size="icon"
+						className="col-span-1"
+						onClick={handleSaveAsDefault}
+					>
 						<Save />
 					</Button>
 				</div>
