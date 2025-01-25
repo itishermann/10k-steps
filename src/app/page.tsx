@@ -2,19 +2,21 @@
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
+import "leaflet-gpx";
+import { AppControl } from "@/components/molecules/map/app-control";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 export default function Home() {
 	return (
-		<main className="h-screen w-screen z-0">
+		<main className="h-screen w-screen">
 			<MapContainer
 				center={[51.505, -0.09]}
 				zoom={13}
 				scrollWheelZoom
-				className="h-full w-full"
+				className="h-full w-screen"
 			>
 				<TileLayer
-					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+					attribution='&copy; <a target="_blank" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Built by <a target="_blank" href="https://itishermann.me">Hermann Kao</a>'
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 				/>
 				<Marker position={[51.505, -0.09]}>
@@ -22,6 +24,7 @@ export default function Home() {
 						A pretty CSS3 popup. <br /> Easily customizable.
 					</Popup>
 				</Marker>
+				<AppControl />
 			</MapContainer>
 		</main>
 	);
