@@ -44,4 +44,4 @@ next-env.d.ts
 coverage/
 *storybook.log
 
-.idea/.idea/
+.idea/*
