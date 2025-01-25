@@ -68,6 +68,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy out --project-name=10k-steps
+          command: pages deploy . --project-name=10k-steps
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 
