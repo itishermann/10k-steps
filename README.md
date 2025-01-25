@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# **10K Step Path Generator**
 
-## Getting Started
+10K Step Path Generator is a fitness app that helps users achieve their daily walking goals by generating personalized looped walking routes. Using **OpenRouteService API**, it calculates paths tailored to your step length and visualizes them on an interactive **Leaflet map**. With support for **GPX downloads**, offline use, and persistent local storage, this app makes fitness simple and fun!
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## **Table of Contents**
+1. [Features](#features)
+2. [Technologies Used](#technologies-used)
+3. [Installation](#installation)
+4. [Usage](#usage)
+5. [How It Works](#how-it-works)
+6. [Contributing](#contributing)
+7. [License](#license)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## **Features**
+- Create looped walking paths to meet daily step goals.
+- Leverages **OpenRouteService API** for optimized paths.
+- Step-length calculator based on height and gender.
+- Visualize routes on an interactive **Leaflet map**.
+- Save routes in a **Dexie database (IndexedDB)** for persistence.
+- Download GPX files for offline navigation.
+- Customizable routes and user preferences.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## **Technologies Used**
+- **[Bun](https://bun.sh/):** An ultra-fast all-in-one JavaScript runtime used for developing this application.
+- **[Mise](https://github.com/jdx/mise):** An dev-tools manager for nearly everything.
+- **OpenRouteService API:** For route generation and optimization.
+- **Leaflet.js:** For map visualization and interactivity.
+- **Dexie.js:** For storing routes and persistent data in IndexedDB.
+- **React & Next.js:** For building the app’s interactive user interface.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## **Installation**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/itishermann/10k-steps.git
+    cd 10k-steps
+    ```
+2. Ensure [Bun](https://bun.sh/) is installed.  
+   Check with:
+    ```bash
+    bun -v
+    ```
+   If not installed, install the version 1.2.0 or higher with mise:
+    ```bash
+      mise trust
+      mise install bun
+    ```
 
-## Deploy on Vercel
+3. Install dependencies using Bun:
+    ```bash
+    bun install
+    ```
+4. Start the development server:
+    ```bash
+    bun dev
+    ```
+5. Open your browser and navigate to `http://localhost:3000` to view your app.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## **Usage**
+1. Input your height and gender to calculate your step length.
+2. Set your desired step goal (default: 10,000 steps).
+3. Generate a personalized walking route based on your preferences.
+4. Preview the route on the map.
+5. Save the route to local storage or download the GPX file for offline navigation.
+6. Hit the path and start walking toward your fitness goals!
+
+---
+
+## **How It Works**
+1. **Step Length Calculation**: The app calculates your individual step length based on height and gender to optimize path planning.
+2. **Path Generation**: Uses the **OpenRouteService API** to calculate looped walking paths that match your desired step count.
+3. **Visualization**: Routes are displayed on a **Leaflet.js map**, allowing you to easily preview the distance and terrain.
+4. **Storage**: Routes are stored in an IndexedDB-powered **Dexie database** for future retrieval.
+5. **GPX File Export**: Save routes as GPX files for offline use on compatible fitness trackers and apps.
+
+---
+
+## **Contributing**
+Contributions are welcome! To contribute:
+1. Fork this repository.
+2. Create a new branch (`git checkout -b your-feature-branch`).
+3. Make your changes and commit (`git commit -m "Add new feature"`).
+4. Push to the branch (`git push origin your-feature-branch`) and open a pull request.
+
+---
+
+## **License**
+This project is open-source and available under the [MIT License](LICENSE).
+
+---
+
+Feel free to customize this file further based on your preferences or additional features you might add! Let me know if you'd like specific sections expanded. 😊
