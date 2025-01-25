@@ -9,6 +9,9 @@ export default {
 	],
 	theme: {
 		extend: {
+			size: {
+				"icon-xs": "1.25rem",
+			},
 			colors: {
 				background: "hsl(var(--background))",
 				foreground: "hsl(var(--foreground))",
@@ -58,13 +61,37 @@ export default {
 			},
 			keyframes: {
 				shine: {
-					"0%": { backgroundPosition: "200% 0" },
-					"25%": { backgroundPosition: "-200% 0" },
-					"100%": { backgroundPosition: "-200% 0" },
+					"0%": {
+						backgroundPosition: "200% 0",
+					},
+					"25%": {
+						backgroundPosition: "-200% 0",
+					},
+					"100%": {
+						backgroundPosition: "-200% 0",
+					},
+				},
+				"accordion-down": {
+					from: {
+						height: "0",
+					},
+					to: {
+						height: "var(--radix-accordion-content-height)",
+					},
+				},
+				"accordion-up": {
+					from: {
+						height: "var(--radix-accordion-content-height)",
+					},
+					to: {
+						height: "0",
+					},
 				},
 			},
 			animation: {
 				shine: "shine 3s ease-out infinite",
+				"accordion-down": "accordion-down 0.2s ease-out",
+				"accordion-up": "accordion-up 0.2s ease-out",
 			},
 		},
 	},
