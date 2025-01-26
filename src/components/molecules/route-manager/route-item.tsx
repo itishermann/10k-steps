@@ -1,8 +1,8 @@
 import type { Route } from "@/lib/entities/route";
-import { getWalkingInstructions } from "@/lib/get-walking-instruction";
+// import { getWalkingInstructions } from "@/lib/get-walking-instruction";
 import { renameGpxTrack } from "@/lib/gpx-utils";
 import { cn } from "@/lib/utils";
-import { parseGPX } from "@we-gold/gpxjs";
+// import { parseGPX } from "@we-gold/gpxjs";
 import L from "leaflet";
 import { Download, Eye, EyeOff, Trash } from "lucide-react";
 import { useMemo, useState } from "react";
@@ -40,13 +40,13 @@ export function RouteItem({
 	};
 
 	const onClick = () => {
-		const [parsedFile, error] = parseGPX(gpxPath);
-		if (error) {
-			console.error(error);
-			return;
-		}
-		console.log(parsedFile?.routes[0].points);
-		console.log(getWalkingInstructions(parsedFile?.routes[0].points));
+		// const [parsedFile, error] = parseGPX(gpxPath);
+		// if (error) {
+		// 	console.error(error);
+		// 	return;
+		// }
+		// console.log(parsedFile?.routes[0].points);
+		// console.log(getWalkingInstructions(parsedFile?.routes[0].points));
 		if (isShown) {
 			onHide();
 		} else {
