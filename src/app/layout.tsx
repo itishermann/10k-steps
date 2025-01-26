@@ -20,28 +20,31 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
+	metadataBase: new URL(
+		process.env.CF_PAGES_URL ?? "https://10ksteps-itishermann.me",
+	),
 	title: "10K Step Path Generator - Achieve Your Daily Step Goal with Ease",
 	description:
 		"Generate a customized looped path to effortlessly reach your daily 10,000 steps goal. Our app helps you stay active and healthy by providing optimized walking routes tailored to your preferences.",
-	manifest: "/assets/site.webmanifest",
+	manifest: "site.webmanifest",
 	applicationName: "10K Step Path Generator",
 	icons: [
 		{
 			rel: "apple-touch-icon",
 			sizes: "180x180",
-			url: "/assets/apple-touch-icon.png",
+			url: "apple-touch-icon.png",
 		},
 		{
 			rel: "icon",
 			type: "image/png",
 			sizes: "32x32",
-			url: "/assets/favicon-32x32.png",
+			url: "favicon-32x32.png",
 		},
 		{
 			rel: "icon",
 			type: "image/png",
 			sizes: "16x16",
-			url: "/assets/favicon-16x16.png",
+			url: "favicon-16x16.png",
 		},
 	],
 };

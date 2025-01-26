@@ -12,7 +12,7 @@ export default function Home() {
 			<MapContainer
 				center={[45.552429, 6.45343]}
 				zoom={13}
-				scrollWheelZoom={false}
+				scrollWheelZoom
 				className="h-full w-screen"
 			>
 				<TileLayer

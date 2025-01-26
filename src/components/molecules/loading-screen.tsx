@@ -5,7 +5,7 @@ export function LoadingScreen() {
 	return (
 		<div className="h-screen w-screen flex items-center justify-center flex-col gap-4">
 			<img
-				src="/assets/logo.png"
+				src="/logo.png"
 				width={150}
 				height={150}
 				alt="10K Step Path Generator Logo"
