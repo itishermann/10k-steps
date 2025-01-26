@@ -113,6 +113,17 @@ export function SocialMediaImageBase({ title }: Props) {
 				>
 					By Hermann Kao | Open Source | MIT License
 				</div>
+				<img
+					alt="itishermann publication logo"
+					src="https://raw.githubusercontent.com/itishermann/10k-steps/refs/heads/main/public/itishermann_publication_logo_white_transparent.svg"
+					style={{
+						position: "absolute",
+						right: "0px",
+						bottom: "40px",
+					}}
+					width={317}
+					height={196}
+				/>
 			</div>
 		</div>
 	);
