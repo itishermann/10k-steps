@@ -1,0 +1,38 @@
+name: Test
+on:
+  pull_request_target:
+    branches:
+      - main
+
+permissions:
+  checks: write
+  pull-requests: write
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install bun
+      uses: oven-sh/setup-bun@v2
+    - name: Install dependencies
+      run: bun install
+    - name: Run tests
+      run: bun run test:ci
+
+    - name: Report code coverage
+      uses: zgosalvez/github-actions-report-lcov@v3
+      with:
+        coverage-files: test-results/lcov*.info
+        minimum-coverage: 0
+        artifact-name: code-coverage-report
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        update-comment: true
+
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        files: |
+          test-results/**/*.xml
