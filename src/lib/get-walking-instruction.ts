@@ -1,11 +1,8 @@
-export interface Point {
-	latitude: number;
-	longitude: number;
-}
+export type Point = { latitude: number; longitude: number };
+export type Segment = { bearing: number; distance: number };
 
-/**
- * Calculate the initial bearing (in degrees) between two points.
- */
+const TURN_THRESHOLD = 15; // Degrees for considering straight movement
+
 export function calculateBearing(
 	startLat: number,
 	startLong: number,
@@ -24,16 +21,13 @@ export function calculateBearing(
 	return ((theta * 180) / Math.PI + 360) % 360;
 }
 
-/**
- * Calculate the distance between two points using the Haversine formula.
- */
 export function haversineDistance(
 	lat1: number,
 	lon1: number,
 	lat2: number,
 	lon2: number,
 ): number {
-	const earthRadius = 6371e3; // Earth radius in meters
+	const R = 6371e3; // Earth radius in meters
 	const phi1 = (lat1 * Math.PI) / 180;
 	const phi2 = (lat2 * Math.PI) / 180;
 	const deltaPhi = ((lat2 - lat1) * Math.PI) / 180;
@@ -43,25 +37,9 @@ export function haversineDistance(
 		Math.sin(deltaPhi / 2) ** 2 +
 		Math.cos(phi1) * Math.cos(phi2) * Math.sin(deltaLambda / 2) ** 2;
 	const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-	return earthRadius * c;
+	return R * c; // Fix: Return the actual calculated distance
 }
 
-/**
- * Determine turn direction (left/right) between two bearings
- */
-export function getTurnDirection(
-	previousBearing: number,
-	currentBearing: number,
-): "left" | "right" {
-	let angleDifference = currentBearing - previousBearing;
-	angleDifference = ((angleDifference % 360) + 360) % 360; // Normalize to 0-360
-	if (angleDifference > 180) angleDifference -= 360; // Get shortest path
-	return angleDifference > 0 ? "right" : "left";
-}
-
-/**
- * Convert bearing to compass direction for initial instruction
- */
 export function getCompassDirection(bearing: number): string {
 	const directions = [
 		"North",
@@ -76,55 +54,74 @@ export function getCompassDirection(bearing: number): string {
 	return directions[Math.floor(((bearing + 22.5) % 360) / 45)];
 }
 
-/**
- * Generate walking instructions with turn directions
- */
+export function getTurnType(
+	prevBearing: number,
+	currentBearing: number,
+): "left" | "right" | "straight" {
+	let angleDiff = currentBearing - prevBearing;
+	angleDiff = ((angleDiff % 360) + 360) % 360;
+	if (angleDiff > 180) angleDiff -= 360;
+
+	if (Math.abs(angleDiff) < TURN_THRESHOLD) return "straight";
+	return angleDiff > 0 ? "right" : "left";
+}
+
+export function formatDistance(distance: number): string {
+	return distance >= 1000
+		? `${(distance / 1000).toFixed(1)}km`
+		: `${Math.round(distance)}m`;
+}
+
 export function getWalkingInstructions(points: Point[]): string[] {
 	const instructions: string[] = [];
-	if (points.length < 2) return instructions;
+	const segments: Segment[] = [];
 
-	let previousBearing: number | null = null;
-	let previousPoint: Point = points[0];
-
-	for (let i = 1; i < points.length; i++) {
-		const currentPoint = points[i];
+	// Generate valid segments
+	for (let i = 0; i < points.length - 1; i++) {
+		const start = points[i];
+		const end = points[i + 1];
 		const distance = haversineDistance(
-			previousPoint.latitude,
-			previousPoint.longitude,
-			currentPoint.latitude,
-			currentPoint.longitude,
+			start.latitude,
+			start.longitude,
+			end.latitude,
+			end.longitude,
 		);
-
-		// Skip points that are too close
 		if (distance < 1) continue;
 
-		const currentBearing = calculateBearing(
-			previousPoint.latitude,
-			previousPoint.longitude,
-			currentPoint.latitude,
-			currentPoint.longitude,
-		);
+		segments.push({
+			bearing: calculateBearing(
+				start.latitude,
+				start.longitude,
+				end.latitude,
+				end.longitude,
+			),
+			distance,
+		});
+	}
 
-		// Format distance
-		const distanceStr =
-			distance >= 1000
-				? `${(distance / 1000).toFixed(1)} km`
-				: `${Math.round(distance)} meters`;
+	if (segments.length === 0) return [];
 
-		if (previousBearing === null) {
-			// First valid segment
-			instructions.push(
-				`Head ${getCompassDirection(currentBearing)} for ${distanceStr}`,
-			);
-			previousBearing = currentBearing;
-		} else {
-			// Subsequent segments with turn direction
-			const turn = getTurnDirection(previousBearing, currentBearing);
-			instructions.push(`Turn ${turn} and walk ${distanceStr}`);
-			previousBearing = currentBearing;
+	// First instruction
+	const first = segments[0];
+	instructions.push(
+		`Walk ${formatDistance(first.distance)} towards ${getCompassDirection(first.bearing)}`,
+	);
+
+	// Subsequent instructions
+	for (let i = 1; i < segments.length; i++) {
+		const prev = segments[i - 1];
+		const current = segments[i];
+		const turn = getTurnType(prev.bearing, current.bearing);
+
+		if (turn !== "straight") {
+			instructions.push(`In ${formatDistance(prev.distance)}, turn ${turn}`);
 		}
 
-		previousPoint = currentPoint;
+		instructions.push(
+			turn === "straight"
+				? `Continue on ${formatDistance(current.distance)}`
+				: `Walk ${formatDistance(current.distance)}`,
+		);
 	}
 
 	return instructions;
