@@ -1,4 +1,4 @@
-interface Point {
+export interface Point {
 	latitude: number;
 	longitude: number;
 }
@@ -6,7 +6,7 @@ interface Point {
 /**
  * Calculate the initial bearing (in degrees) between two points.
  */
-function calculateBearing(
+export function calculateBearing(
 	startLat: number,
 	startLong: number,
 	endLat: number,
@@ -27,7 +27,7 @@ function calculateBearing(
 /**
  * Calculate the distance between two points using the Haversine formula.
  */
-function haversineDistance(
+export function haversineDistance(
 	lat1: number,
 	lon1: number,
 	lat2: number,
@@ -49,7 +49,7 @@ function haversineDistance(
 /**
  * Determine turn direction (left/right) between two bearings
  */
-function getTurnDirection(
+export function getTurnDirection(
 	previousBearing: number,
 	currentBearing: number,
 ): "left" | "right" {
@@ -62,7 +62,7 @@ function getTurnDirection(
 /**
  * Convert bearing to compass direction for initial instruction
  */
-function getCompassDirection(bearing: number): string {
+export function getCompassDirection(bearing: number): string {
 	const directions = [
 		"North",
 		"North-East",
