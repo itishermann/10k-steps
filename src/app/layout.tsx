@@ -3,6 +3,7 @@ import { Lato, Poppins } from "next/font/google";
 import "@/styles/globals.css";
 import "@/styles/typography.css";
 import { ThemeProvider } from "@/components/molecules/theme-provider";
+import { baseUrl } from "@/lib/env";
 import type { PropsWithChildren } from "react";
 
 const poppins = Poppins({
@@ -20,9 +21,7 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-	metadataBase: new URL(
-		process.env.CF_PAGES_URL ?? "https://10ksteps-itishermann.me",
-	),
+	metadataBase: baseUrl,
 	title: "10K Step Path Generator - Achieve Your Daily Step Goal with Ease",
 	description:
 		"Generate a customized looped path to effortlessly reach your daily 10,000 steps goal. Our app helps you stay active and healthy by providing optimized walking routes tailored to your preferences.",
