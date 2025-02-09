@@ -1,3 +1,4 @@
+import { db } from "@/lib/db";
 import type { Route } from "@/lib/entities/route";
 import { renameGpxTrack } from "@/lib/gpx-utils";
 import { cn } from "@/lib/utils";
@@ -7,6 +8,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import type * as React from "react";
 import { useMap } from "react-leaflet";
+import { toast } from "sonner";
 
 interface RouteItemProps {
 	data: Route;
@@ -65,6 +67,28 @@ export function RouteItem({
 		URL.revokeObjectURL(url);
 	};
 
+	const deleteItem = async (e: React.MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault();
+		e.stopPropagation();
+		const confirmDelete = confirm(
+			"Are you sure you want to delete this route?",
+		);
+		if (!confirmDelete) return;
+		const toastId = `delete-route-${id}-toast`;
+		try {
+			toast.loading("Deleting route...", { id: toastId });
+			onHide();
+			await db.route.delete(id);
+			toast.success("Route deleted successfully", { id: toastId });
+		} catch (error) {
+			toast.error("An error occurred", {
+				description: (error as Error)?.message ?? "Unknown error",
+				duration: 5000,
+				id: toastId,
+			});
+		}
+	};
+
 	return (
 		<div
 			onClick={onClick}
@@ -98,7 +122,9 @@ export function RouteItem({
 			<button onClick={downloadGpxFile} className="col-span-1" type="button">
 				<Download className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all text-blue-500" />
 			</button>
-			<Trash className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all col-span-1 text-red-500" />
+			<button onClick={deleteItem} className="col-span-1" type="button">
+				<Trash className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all col-span-1 text-red-500" />
+			</button>
 		</div>
 	);
 }

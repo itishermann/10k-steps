@@ -43,6 +43,8 @@ export function RoutesForm() {
 				setView: true,
 				maxZoom: 13,
 				enableHighAccuracy: true,
+				// 5 seconds
+				maximumAge: 1000 * 5,
 			}),
 		[map],
 	);

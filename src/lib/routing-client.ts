@@ -1,6 +1,10 @@
 import ORS from "openrouteservice";
 import { Profile } from "openrouteservice/dist/common";
-import { DirectionsFormat } from "openrouteservice/dist/directions";
+import {
+	DirectionsExtraInfo,
+	DirectionsFormat,
+	DirectionsPreference,
+} from "openrouteservice/dist/directions";
 
 export interface Point {
 	lat: number;
@@ -35,6 +39,12 @@ export class RoutingClient {
 			DirectionsFormat.GPX,
 			{
 				coordinates: [[lng, lat]],
+				elevation: true,
+				instructions: true,
+				geometry: true,
+				instructions_format: "text",
+				extra_info: [DirectionsExtraInfo.TRAIL_DIFFICULTY],
+				preference: DirectionsPreference.SHORTEST,
 				options: {
 					round_trip: {
 						// The target length of the route in meters (note that this is a preferred value, but results may be different).
