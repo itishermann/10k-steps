@@ -27,6 +27,7 @@ export function AppControl() {
 			<Drawer
 				dismissible={false}
 				open
+				modal={false}
 				snapPoints={snapPoints}
 				activeSnapPoint={snap}
 				setActiveSnapPoint={setSnap}
