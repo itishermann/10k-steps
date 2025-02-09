@@ -1,10 +1,9 @@
 import type { Route } from "@/lib/entities/route";
-// import { getWalkingInstructions } from "@/lib/get-walking-instruction";
 import { renameGpxTrack } from "@/lib/gpx-utils";
 import { cn } from "@/lib/utils";
-// import { parseGPX } from "@we-gold/gpxjs";
 import L from "leaflet";
-import { Download, Eye, EyeOff, Trash } from "lucide-react";
+import { Download, Navigation, Trash } from "lucide-react";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import type * as React from "react";
 import { useMap } from "react-leaflet";
@@ -14,10 +13,9 @@ interface RouteItemProps {
 }
 
 export function RouteItem({
-	data: { path: gpxPath, color, stepLength },
+	data: { path: gpxPath, color, stepLength, id },
 }: RouteItemProps) {
 	const [isShown, setIsShown] = useState(false);
-	const VisibilityIcon = isShown ? EyeOff : Eye;
 	const map = useMap();
 	const gpx = useMemo(
 		() =>
@@ -40,13 +38,6 @@ export function RouteItem({
 	};
 
 	const onClick = () => {
-		// const [parsedFile, error] = parseGPX(gpxPath);
-		// if (error) {
-		// 	console.error(error);
-		// 	return;
-		// }
-		// console.log(parsedFile?.routes[0].points);
-		// console.log(getWalkingInstructions(parsedFile?.routes[0].points));
 		if (isShown) {
 			onHide();
 		} else {
@@ -96,7 +87,14 @@ export function RouteItem({
 				<dd className="font-bold">&asymp;{stepLength.toFixed(2)}</dd>
 				<dt className="text-muted-foreground">cm/steps</dt>
 			</dl>
-			<VisibilityIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all col-span-1" />
+			<Link
+				href={{
+					pathname: "/navigator",
+					query: { gpxId: id },
+				}}
+			>
+				<Navigation className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all col-span-1" />
+			</Link>
 			<button onClick={downloadGpxFile} className="col-span-1" type="button">
 				<Download className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all text-blue-500" />
 			</button>
