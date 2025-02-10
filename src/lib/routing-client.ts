@@ -44,7 +44,7 @@ export class RoutingClient {
 			DirectionsFormat.GEOJSON,
 			{
 				coordinates: [[lng, lat]],
-				elevation: true,
+				elevation: "true",
 				instructions: true,
 				geometry: true,
 				instructions_format: "html",
