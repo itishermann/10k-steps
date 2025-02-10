@@ -49,9 +49,7 @@ export function AppControl() {
 							location.
 						</DrawerDescription>
 					</DrawerHeader>
-					<DrawerFooter>
-						<RoutesManager />
-					</DrawerFooter>
+					<RoutesManager />
 				</DrawerContent>
 			</Drawer>
 		</Control>

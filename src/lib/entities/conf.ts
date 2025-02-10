@@ -14,3 +14,5 @@ export type IConf = {
 	createdAt: Date;
 	updatedAt: Date | null;
 };
+
+export type IConfInput = Omit<Conf, "createdAt" | "updatedAt" | "table">;

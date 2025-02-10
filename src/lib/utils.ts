@@ -30,17 +30,3 @@ export function calculateDistance(
 	const distance = stepLengthInMeters * stepAmount;
 	return unit === "km" ? distance / 1000 : distance;
 }
-
-/**
- * Generates a random RGB color.
- *
- * @returns An string with the RGB color.
- */
-export function generateRandomRgbColor(): string {
-	const color = {
-		r: Math.floor(Math.random() * 256),
-		g: Math.floor(Math.random() * 256),
-		b: Math.floor(Math.random() * 256),
-	};
-	return `rgb(${color.r},${color.g},${color.b})`;
-}

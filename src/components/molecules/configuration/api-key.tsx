@@ -25,7 +25,6 @@ export function ApiKey() {
 	return (
 		<div>
 			<div className="space-y-2">
-				<h4 className="font-medium leading-none">Configuration</h4>
 				<p className="text-sm text-muted-foreground">
 					Provide an api key in order to use the OpenRouteService API. You can
 					get one for free by signing up at{" "}

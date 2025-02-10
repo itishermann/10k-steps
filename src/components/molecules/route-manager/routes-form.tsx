@@ -49,12 +49,12 @@ export function RoutesForm() {
 		[map],
 	);
 
-	useMapEvent("locationfound", (e) =>
+	useMapEvent("locationfound", (e) => {
 		setStartPoint({
 			lat: e.latlng.lat,
 			lng: e.latlng.lng,
-		}),
-	);
+		});
+	});
 
 	useEffect(() => {
 		refreshLocation();

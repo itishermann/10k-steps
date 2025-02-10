@@ -1,3 +1,4 @@
+import { ScrollArea } from "@/components/atoms/scroll-area";
 import { RouteItem } from "@/components/molecules/route-manager/route-item";
 import { db } from "@/lib/db";
 import type { Route } from "@/lib/entities/route";
@@ -19,6 +20,6 @@ export function RoutesList() {
 	));
 
 	return (
-		<div className="flex flex-col gap-2 overflow-y-auto h-[30vh]">{mapped}</div>
+		<ScrollArea className="flex flex-col gap-2 h-[30vh]">{mapped}</ScrollArea>
 	);
 }
