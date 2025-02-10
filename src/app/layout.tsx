@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Lato, Poppins } from "next/font/google";
 import "@/styles/globals.css";
 import "@/styles/typography.css";
+import "@/styles/leaflet-custom-icons.css";
 import { ThemeProvider } from "@/components/molecules/theme-provider";
 import { baseUrl } from "@/lib/env";
 import type { PropsWithChildren } from "react";
