@@ -2,7 +2,6 @@
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
-import "leaflet-gpx";
 import { Button } from "@/components/atoms/button";
 import { Control } from "@/components/atoms/control";
 import { latLng } from "leaflet";
