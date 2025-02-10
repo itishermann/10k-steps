@@ -1,7 +1,10 @@
 "use client";
+import { LoadingScreen } from "@/components/molecules/loading-screen";
+import { Result } from "@/components/molecules/result";
 import { db } from "@/lib/db";
 import type { Route } from "@/lib/entities/route";
 import { use, useEffect, useState } from "react";
+import type * as React from "react";
 import { toast } from "sonner";
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -38,16 +41,28 @@ export default function Navigation(props: {
 	}, [routeId]);
 
 	if (!routeId || typeof routeId !== "string") {
-		return <div>RouteId not provided</div>;
+		return <Result label="Route identifier not provided" status="warning" />;
 	}
 
 	if (loading) {
-		return <div>Loading...</div>;
+		return <LoadingScreen withLogo={false} text="Loading your route" />;
 	}
 
 	if (!route) {
-		return <div>Failed to load route</div>;
+		return (
+			<Result
+				label="Failed to load route"
+				description="The route you are looking for could not be found, you may have used a link from another device/browser or the route may have been deleted"
+				status="error"
+			/>
+		);
 	}
 
-	return <div>Comming soon</div>;
+	return (
+		<Result
+			label="Coming soon"
+			status="info"
+			description="Soon you will be able to navigate a generate path using this page"
+		/>
+	);
 }
