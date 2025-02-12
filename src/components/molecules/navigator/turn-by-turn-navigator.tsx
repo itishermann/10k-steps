@@ -5,11 +5,11 @@ import {
 	ResizablePanelGroup,
 } from "@/components/atoms/resizable";
 import { UserGeolocationControl } from "@/components/molecules/map/user-geolocation-control";
+import { RouteHotline } from "@/components/molecules/route-manager/route-hotline";
 import type { Route } from "@/lib/entities/route";
 import { LatLngBounds } from "leaflet";
 import type * as React from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
-import { Hotline } from "react-leaflet-hotline";
 
 interface TurnByTurnNavigatorProps {
 	route: Route;
@@ -29,21 +29,17 @@ export function TurnByTurnNavigator({ route }: TurnByTurnNavigatorProps) {
 				<ResizablePanel minSize={25} defaultSize={75}>
 					<MapContainer
 						center={[startingPoint.lat, startingPoint.lng]}
-						// zoom={13}
 						bounds={bounds}
 						scrollWheelZoom
 						className="h-full w-full"
 					>
 						<UserGeolocationControl />
-						<Hotline
-							data={route.coordinates}
-							getLat={({ point }) => point.lat}
-							getLng={({ point }) => point.lng}
-							getVal={({ point }) => point.value}
-							options={{
-								min: route.minElevation,
-								max: route.maxElevation,
-							}}
+						<RouteHotline
+							coordinates={route.coordinates}
+							minElevation={route.minElevation}
+							maxElevation={route.maxElevation}
+							originLatitude={route.originLatitude}
+							originLongitude={route.originLongitude}
 						/>
 						<TileLayer
 							attribution='&copy; <a target="_blank" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Built by <a target="_blank" href="https://itishermann.me">Hermann Kao</a>'

@@ -1,4 +1,4 @@
-import { routeStartingPointIcon } from "@/components/molecules/route-manager/route-starting-point-icon";
+import { RouteHotline } from "@/components/molecules/route-manager/route-hotline";
 import { db } from "@/lib/db";
 import type { Route } from "@/lib/entities/route";
 import { geojsonToGpx } from "@/lib/gpx-utils";
@@ -8,8 +8,7 @@ import { Download, Navigation, Trash } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import type * as React from "react";
-import { Marker, Popup, useMap } from "react-leaflet";
-import { Hotline } from "react-leaflet-hotline";
+import { useMap } from "react-leaflet";
 import { toast } from "sonner";
 
 interface RouteItemProps {
@@ -136,27 +135,13 @@ export function RouteItem({
 				{new Date(createdAt).toLocaleString()}
 			</small>
 			{isShown && (
-				<>
-					<Hotline
-						data={coordinates}
-						getLat={({ point }) => point.lat}
-						getLng={({ point }) => point.lng}
-						getVal={({ point }) => point.value}
-						options={{
-							min: minElevation,
-							max: maxElevation,
-						}}
-					/>
-					<Marker
-						position={{
-							lat: originLatitude,
-							lng: originLongitude,
-						}}
-						icon={routeStartingPointIcon}
-					>
-						<Popup>This is the starting point.</Popup>
-					</Marker>
-				</>
+				<RouteHotline
+					coordinates={coordinates}
+					originLongitude={originLongitude}
+					originLatitude={originLatitude}
+					maxElevation={maxElevation}
+					minElevation={minElevation}
+				/>
 			)}
 		</div>
 	);
