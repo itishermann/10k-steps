@@ -117,14 +117,9 @@ export function RouteItem({
 				<dd className="font-bold">&asymp;{stepLength.toFixed(2)}</dd>
 				<dt className="text-muted-foreground">cm/steps</dt>
 			</dl>
-			<Link
-				href={{
-					pathname: "/navigator",
-					query: { routeId: id },
-				}}
-			>
+			<a href={`/navigator?routeId=${id}`}>
 				<Navigation className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all col-span-1" />
-			</Link>
+			</a>
 			<button onClick={downloadGpxFile} className="col-span-1" type="button">
 				<Download className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all text-blue-500" />
 			</button>
