@@ -7,6 +7,7 @@ import {
 import { UserGeolocationControl } from "@/components/molecules/map/user-geolocation-control";
 import { InstructionCarousel } from "@/components/molecules/navigator/instruction-carousel";
 import { InstructionHighlighter } from "@/components/molecules/navigator/instruction-highlighter";
+import { UserLocationDispatcher } from "@/components/molecules/navigator/user-location-dispatcher";
 import { RouteHotline } from "@/components/molecules/route-manager/route-hotline";
 import type { Route } from "@/lib/entities/route";
 import { LatLngBounds } from "leaflet";
@@ -37,7 +38,8 @@ export function TurnByTurnNavigator({ route }: TurnByTurnNavigatorProps) {
 						id="turn-by-turn-navigator-map"
 					>
 						<InstructionHighlighter />
-						<UserGeolocationControl enableHighAccuracy />
+						<UserLocationDispatcher />
+						<UserGeolocationControl enableHighAccuracy watch />
 						<RouteHotline
 							coordinates={route.coordinates}
 							minElevation={route.minElevation}

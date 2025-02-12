@@ -28,7 +28,8 @@ export function InstructionCarousel({ geojson }: InstructionCarouselProps) {
 	const { publishEvent } = useEventEmitter(
 		EventNames.RenderHotPolylineHighlight,
 	);
-
+	const { eventData } = useEventEmitter(EventNames.UserLocationUpdated);
+	// console.log(eventData);
 	// biome-ignore lint/correctness/useExhaustiveDependencies: api is the only dependency needed
 	useEffect(() => {
 		if (!api) return;

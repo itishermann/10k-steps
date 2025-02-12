@@ -9,12 +9,15 @@ export interface EventMap {
 		options?: L.PolylineOptions;
 		fitBounds?: boolean;
 	};
-	// Add more events here
+	UserLocationUpdated: {
+		coordinates: L.LatLngExpression;
+	};
 }
 
 // Create enum from EventMap keys
 export const EventNames = {
 	RenderHotPolylineHighlight: "RenderHotPolylineHighlight",
+	UserLocationUpdated: "UserLocationUpdated",
 } as const;
 
 // Type for event names

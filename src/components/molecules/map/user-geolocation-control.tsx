@@ -1,18 +1,21 @@
 "use client";
 import { LocateControl } from "leaflet.locatecontrol";
 import { useEffect, useRef } from "react";
-import { useMap } from "react-leaflet";
+import { useMap, useMapEvent } from "react-leaflet";
+import { toast } from "sonner";
 
 interface UserGeolocationMarkerProps {
 	withMarker?: boolean;
 	retrieveOnLoad?: boolean;
 	enableHighAccuracy?: boolean;
+	watch?: boolean;
 }
 
 export function UserGeolocationControl({
 	withMarker = true,
 	retrieveOnLoad = true,
 	enableHighAccuracy,
+	watch,
 }: UserGeolocationMarkerProps) {
 	const map = useMap();
 	const controlRef = useRef<LocateControl | null>(null);
@@ -29,6 +32,7 @@ export function UserGeolocationControl({
 			drawCircle: withMarker,
 			locateOptions: {
 				enableHighAccuracy,
+				watch,
 			},
 		});
 		controlRef.current.addTo(map);
@@ -36,6 +40,12 @@ export function UserGeolocationControl({
 			controlRef.current.start();
 		}
 	}, []);
+
+	useMapEvent("locationerror", (e) => {
+		toast.error("Failed to retrieve your location", {
+			description: e.message,
+		});
+	});
 
 	return null;
 }
