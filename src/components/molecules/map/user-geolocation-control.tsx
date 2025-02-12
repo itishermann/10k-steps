@@ -6,11 +6,13 @@ import { useMap } from "react-leaflet";
 interface UserGeolocationMarkerProps {
 	withMarker?: boolean;
 	retrieveOnLoad?: boolean;
+	enableHighAccuracy?: boolean;
 }
 
 export function UserGeolocationControl({
 	withMarker = true,
 	retrieveOnLoad = true,
+	enableHighAccuracy,
 }: UserGeolocationMarkerProps) {
 	const map = useMap();
 	const controlRef = useRef<LocateControl | null>(null);
@@ -25,6 +27,9 @@ export function UserGeolocationControl({
 			},
 			drawMarker: withMarker,
 			drawCircle: withMarker,
+			locateOptions: {
+				enableHighAccuracy,
+			},
 		});
 		controlRef.current.addTo(map);
 		if (retrieveOnLoad) {
