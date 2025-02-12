@@ -2,8 +2,10 @@
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
+import "leaflet.locatecontrol";
+import "leaflet.locatecontrol/dist/L.Control.Locate.min.css";
 import { AppControl } from "@/components/molecules/map/app-control";
-import { UserGeolocationMarker } from "@/components/molecules/map/user-geolocation-marker";
+import { UserGeolocationControl } from "@/components/molecules/map/user-geolocation-control";
 import { MapContainer, TileLayer } from "react-leaflet";
 
 export default function Home() {
@@ -16,7 +18,7 @@ export default function Home() {
 				className="h-full w-full"
 			>
 				<AppControl />
-				<UserGeolocationMarker />
+				<UserGeolocationControl />
 				<TileLayer
 					attribution='&copy; <a target="_blank" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Built by <a target="_blank" href="https://itishermann.me">Hermann Kao</a>'
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -1,5 +1,11 @@
 "use client";
+import "leaflet/dist/leaflet.css";
+import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
+import "leaflet-defaulticon-compatibility";
+import "leaflet.locatecontrol";
+import "leaflet.locatecontrol/dist/L.Control.Locate.min.css";
 import { LoadingScreen } from "@/components/molecules/loading-screen";
+import { TurnByTurnNavigator } from "@/components/molecules/navigator/turn-by-turn-navigator";
 import { Result } from "@/components/molecules/result";
 import { db } from "@/lib/db";
 import type { Route } from "@/lib/entities/route";
@@ -41,7 +47,12 @@ export default function Navigation(props: {
 	}, [routeId]);
 
 	if (!routeId || typeof routeId !== "string") {
-		return <Result label="Route identifier not provided" status="warning" />;
+		return (
+			<Result
+				label="Route identifier not provided or is invalid"
+				status="warning"
+			/>
+		);
 	}
 
 	if (loading) {
@@ -58,11 +69,5 @@ export default function Navigation(props: {
 		);
 	}
 
-	return (
-		<Result
-			label="Coming soon"
-			status="info"
-			description="Soon you will be able to navigate a generate path using this page"
-		/>
-	);
+	return <TurnByTurnNavigator route={route} />;
 }
