@@ -5,6 +5,8 @@ import {
 	ResizablePanelGroup,
 } from "@/components/atoms/resizable";
 import { UserGeolocationControl } from "@/components/molecules/map/user-geolocation-control";
+import { InstructionCarousel } from "@/components/molecules/navigator/instruction-carousel";
+import { InstructionHighlighter } from "@/components/molecules/navigator/instruction-highlighter";
 import { RouteHotline } from "@/components/molecules/route-manager/route-hotline";
 import type { Route } from "@/lib/entities/route";
 import { LatLngBounds } from "leaflet";
@@ -26,14 +28,16 @@ export function TurnByTurnNavigator({ route }: TurnByTurnNavigatorProps) {
 	return (
 		<main className="h-screen w-screen">
 			<ResizablePanelGroup direction="vertical" className="h-full w-full">
-				<ResizablePanel minSize={25} defaultSize={75}>
+				<ResizablePanel maxSize={70} minSize={50} defaultSize={70}>
 					<MapContainer
 						center={[startingPoint.lat, startingPoint.lng]}
 						bounds={bounds}
 						scrollWheelZoom
 						className="h-full w-full"
+						id="turn-by-turn-navigator-map"
 					>
-						<UserGeolocationControl />
+						<InstructionHighlighter />
+						<UserGeolocationControl enableHighAccuracy />
 						<RouteHotline
 							coordinates={route.coordinates}
 							minElevation={route.minElevation}
@@ -48,9 +52,10 @@ export function TurnByTurnNavigator({ route }: TurnByTurnNavigatorProps) {
 					</MapContainer>
 				</ResizablePanel>
 				<ResizableHandle />
-				<ResizablePanel minSize={20} defaultSize={25}>
-					<div className="flex h-full items-center justify-center p-6">
+				<ResizablePanel minSize={30} maxSize={50} defaultSize={30}>
+					<div className="flex h-full items-center justify-center p-6 flex-col">
 						<span className="font-semibold">Instructions</span>
+						<InstructionCarousel geojson={route.geojson} />
 					</div>
 				</ResizablePanel>
 			</ResizablePanelGroup>

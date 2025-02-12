@@ -1,3 +1,4 @@
+import type { OrsFeaturesCollection } from "@/types/geojson";
 import ORS from "openrouteservice";
 import { Profile } from "openrouteservice/dist/common";
 import {
@@ -68,7 +69,8 @@ export class RoutingClient {
 			// @ts-expect-error - typings don't take into account the error property
 			throw new Error((res.error as Error).message);
 		}
-		return res;
+		// @ts-expect-error - typings are not up to date
+		return res as OrsFeaturesCollection;
 	}
 }
 

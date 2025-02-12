@@ -71,41 +71,41 @@ export function geojsonToGpx(
  * 12	Keep left
  * 13	Keep right
  */
-export function getInstruction(instructionType: number) {
+export function getInstructionType(instructionType: number) {
 	switch (instructionType) {
-		case Instruction.Left:
+		case InstructionType.Left:
 			return "Left";
-		case Instruction.Right:
+		case InstructionType.Right:
 			return "Right";
-		case Instruction.SharpLeft:
+		case InstructionType.SharpLeft:
 			return "Sharp left";
-		case Instruction.SharpRight:
+		case InstructionType.SharpRight:
 			return "Sharp right";
-		case Instruction.SlightLeft:
+		case InstructionType.SlightLeft:
 			return "Slight left";
-		case Instruction.SlightRight:
+		case InstructionType.SlightRight:
 			return "Slight right";
-		case Instruction.Straight:
+		case InstructionType.Straight:
 			return "Straight";
-		case Instruction.EnterRoundabout:
+		case InstructionType.EnterRoundabout:
 			return "Enter roundabout";
-		case Instruction.ExitRoundabout:
+		case InstructionType.ExitRoundabout:
 			return "Exit roundabout";
-		case Instruction.Uturn:
+		case InstructionType.Uturn:
 			return "U-turn";
-		case Instruction.Goal:
+		case InstructionType.Goal:
 			return "Goal";
-		case Instruction.Depart:
+		case InstructionType.Depart:
 			return "Depart";
-		case Instruction.KeepLeft:
+		case InstructionType.KeepLeft:
 			return "Keep left";
-		case Instruction.KeepRight:
+		case InstructionType.KeepRight:
 			return "Keep right";
 		default:
 			return "Unknown";
 	}
 }
-export enum Instruction {
+export enum InstructionType {
 	Left = 0,
 	Right = 1,
 	SharpLeft = 2,
@@ -121,3 +121,20 @@ export enum Instruction {
 	KeepLeft = 12,
 	KeepRight = 13,
 }
+
+export const instructionCodeToSymbol = [
+	"&lsh;", // Turn left           [0]
+	"&rsh;", // Turn right          [1]
+	"&cularr;", // Sharp left       [2]
+	"&curarr;", // Sharp right      [3]
+	"&nwarr;", // Slight left       [4]
+	"&nearr;", // Slight right      [5]
+	"&uarr;", // Straight           [6]
+	"&orarr;", // Enter roundabout  [7]
+	"&orarr;", // Exit roundabout   [8]
+	"&cularr;", // U-turn           [9]
+	"&nwArr;", // Goal              [10]
+	"&uArr;", // Depart             [11]
+	"&larrb;", // Keep left  [12]
+	"&rarrb;", // Keep right          [13]
+];

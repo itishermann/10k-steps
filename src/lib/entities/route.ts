@@ -1,10 +1,10 @@
 import type { AppDatabase } from "@/lib/db";
+import type { OrsFeaturesCollection } from "@/types/geojson";
 import { Entity } from "dexie";
-import type { FeatureCollection } from "geojson";
 
 export class Route extends Entity<AppDatabase> implements IRoute {
 	id!: string;
-	geojson!: FeatureCollection;
+	geojson!: OrsFeaturesCollection;
 	stepLength!: number;
 	originLatitude!: number;
 	originLongitude!: number;
@@ -39,7 +39,7 @@ export type IRoute = {
 	amountOfSteps: number;
 	createdAt: Date;
 	updatedAt: Date | null;
-	geojson: FeatureCollection;
+	geojson: OrsFeaturesCollection;
 	directionLanguage: string;
 	maxElevation: number;
 	minElevation: number;
