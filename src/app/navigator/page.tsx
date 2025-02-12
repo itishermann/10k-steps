@@ -9,17 +9,13 @@ import { TurnByTurnNavigator } from "@/components/molecules/navigator/turn-by-tu
 import { Result } from "@/components/molecules/result";
 import { db } from "@/lib/db";
 import type { Route } from "@/lib/entities/route";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import type * as React from "react";
 import { toast } from "sonner";
 
-type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
-
-export default function Navigation(props: {
-	searchParams: SearchParams;
-}) {
-	const searchParams = use(props.searchParams);
-	const routeId = searchParams.routeId;
+export default function Navigation() {
+	const searchParams = new URLSearchParams(window.location.search);
+	const routeId = searchParams.get("routeId");
 	const [loading, setLoading] = useState(true);
 	const [route, setRoute] = useState<Route | null>(null);
 
@@ -46,7 +42,7 @@ export default function Navigation(props: {
 		}
 	}, [routeId]);
 
-	if (!routeId || typeof routeId !== "string") {
+	if (!routeId) {
 		return (
 			<Result
 				label="Route identifier not provided or is invalid"
