@@ -9,6 +9,7 @@ import {
 import { InstructionItem } from "@/components/molecules/navigator/instruction-item";
 import { EventNames } from "@/lib/event-emitter";
 import { useEventEmitter } from "@/lib/hooks/use-event-emitter";
+import { cn } from "@/lib/utils";
 import type { OrsFeaturesCollection } from "@/types/geojson";
 import L from "leaflet";
 import { useEffect, useMemo, useState } from "react";
@@ -23,7 +24,7 @@ export function InstructionCarousel({ geojson }: InstructionCarouselProps) {
 		[geojson],
 	);
 	const [api, setApi] = useState<CarouselApi>();
-	// const [selectedStep, setSelectedStep] = useState<Step>(steps[0]);
+	const [selectedIndex, setSelectedIndex] = useState(0);
 	const { publishEvent } = useEventEmitter(
 		EventNames.RenderHotPolylineHighlight,
 	);
@@ -38,6 +39,7 @@ export function InstructionCarousel({ geojson }: InstructionCarouselProps) {
 		api.on("select", (a) => {
 			const s = steps[a.selectedScrollSnap()];
 			if (!s) return;
+			setSelectedIndex(a.selectedScrollSnap());
 			const [sliceStart, sliceEnd] = s.way_points;
 			const coordinates = geojson.features[0].geometry.coordinates
 				.slice(sliceStart, sliceEnd + 1)
@@ -61,16 +63,22 @@ export function InstructionCarousel({ geojson }: InstructionCarouselProps) {
 		<Carousel
 			setApi={setApi}
 			opts={{
-				align: "start",
+				align: "center",
 			}}
-			orientation="horizontal"
 			className="w-full"
 		>
 			<CarouselContent>
-				{steps.map((step) => (
+				{steps.map((step, index) => (
 					<CarouselItem
 						key={`${step.instruction}_${step.distance}_${step.way_points.toString()}`}
-						className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+						className={cn(
+							"md:basis-1/2 lg:basis-1/3 xl:basis-1/4 md:scale-75",
+							index === selectedIndex &&
+								"md:transform md:scale-100 md:transition-transform md:duration-300 md:ease-in-out",
+							index === steps.length - 1 && "md:mr-[30%]",
+							index === 0 && "md:ml-[30%]",
+						)}
+						onClick={() => api?.scrollTo(index)}
 					>
 						<InstructionItem step={step} />
 					</CarouselItem>
