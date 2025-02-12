@@ -4,17 +4,9 @@ import L from "leaflet";
 import { useEffect } from "react";
 import { useMap } from "react-leaflet";
 
-export interface InstructionHighlighterProps {
-	coordinates: L.LatLngExpression[] | L.LatLngExpression[][];
-	options?: L.PolylineOptions;
-	fitBounds?: boolean;
-}
-
 export function InstructionHighlighter() {
 	const map = useMap();
-	const { eventData } = useEventEmitter<InstructionHighlighterProps>(
-		EventNames.RenderHotPolylineHighlight,
-	);
+	const { eventData } = useEventEmitter(EventNames.RenderHotPolylineHighlight);
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: When the eventData changes, the map should be updated
 	useEffect(() => {

@@ -1,12 +1,17 @@
-import globalEventEmitter, { type EventNames } from "@/lib/event-emitter";
+import globalEventEmitter, {
+	type EventNames,
+	type EventMap,
+} from "@/lib/event-emitter";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-export const useEventEmitter = <T>(eventName: EventNames) => {
-	const [eventData, setEventData] = useState<T>();
+export const useEventEmitter = <TEventName extends EventNames>(
+	eventName: TEventName,
+) => {
+	const [eventData, setEventData] = useState<EventMap[TEventName]>();
 	const skipRerender = useRef(false);
 
 	const publishEvent = useCallback(
-		(eventData: T, skipRender = true) => {
+		(eventData: EventMap[TEventName], skipRender = true) => {
 			skipRerender.current = skipRender;
 			const event = new CustomEvent(eventName, { detail: eventData });
 			globalEventEmitter.dispatchEvent(event);
@@ -14,23 +19,21 @@ export const useEventEmitter = <T>(eventName: EventNames) => {
 		[eventName],
 	);
 
-	// biome-ignore lint/correctness/useExhaustiveDependencies: the skipRerender is used to prevent rerendering when the event is published
 	useEffect(() => {
 		const listener = (event: Event) => {
 			if (skipRerender.current) {
 				skipRerender.current = false;
 				return;
 			}
-			setEventData((event as CustomEvent).detail);
+			setEventData((event as CustomEvent<EventMap[TEventName]>).detail);
 		};
 
 		globalEventEmitter.addEventListener(eventName, listener);
 
-		// Cleanup subscription on unmount
 		return () => {
 			globalEventEmitter.removeEventListener(eventName, listener);
 		};
-	}, [eventName, skipRerender]);
+	}, [eventName]);
 
 	return { eventData, publishEvent };
 };

@@ -6,11 +6,10 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "@/components/atoms/carousel";
-import type { InstructionHighlighterProps } from "@/components/molecules/navigator/instruction-highlighter";
 import { InstructionItem } from "@/components/molecules/navigator/instruction-item";
 import { EventNames } from "@/lib/event-emitter";
 import { useEventEmitter } from "@/lib/hooks/use-event-emitter";
-import type { OrsFeaturesCollection, Step } from "@/types/geojson";
+import type { OrsFeaturesCollection } from "@/types/geojson";
 import L from "leaflet";
 import { useEffect, useMemo, useState } from "react";
 
@@ -24,8 +23,8 @@ export function InstructionCarousel({ geojson }: InstructionCarouselProps) {
 		[geojson],
 	);
 	const [api, setApi] = useState<CarouselApi>();
-	const [selectedStep, setSelectedStep] = useState<Step>(steps[0]);
-	const { publishEvent } = useEventEmitter<InstructionHighlighterProps>(
+	// const [selectedStep, setSelectedStep] = useState<Step>(steps[0]);
+	const { publishEvent } = useEventEmitter(
 		EventNames.RenderHotPolylineHighlight,
 	);
 
@@ -68,7 +67,7 @@ export function InstructionCarousel({ geojson }: InstructionCarouselProps) {
 			className="w-full"
 		>
 			<CarouselContent>
-				{steps.map((step, index) => (
+				{steps.map((step) => (
 					<CarouselItem
 						key={`${step.instruction}_${step.distance}_${step.way_points.toString()}`}
 						className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
