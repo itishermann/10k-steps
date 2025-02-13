@@ -25,8 +25,7 @@ export class AppDatabase extends Dexie {
 			})
 			.upgrade((tx) => {
 				// remove path(gpx) from route and replace it with geojson
-				// @ts-expect-error - the typings are incorrect
-				return tx.route.toCollection().modify((r) => {
+				return tx.db.table("route").toCollection().modify((r) => {
 					const featureCollection = fromGpx(
 						new DOMParser().parseFromString(r.path, "text/xml"),
 					);
