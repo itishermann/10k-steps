@@ -40,7 +40,7 @@
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/itishermann/10k-steps.git
+    git clone https://gitlab.com/itishermann/10k-steps.git
     cd 10k-steps
     ```
 2. Ensure [Bun](https://bun.sh/) is installed.  
