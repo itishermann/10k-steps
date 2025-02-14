@@ -1,8 +1,42 @@
 # **10K Step Path Generator**
+# 🚚 Repository Migration Announcement 🚚
+
+Hello everyone!
+
+We are excited to announce that our repository is moving to a new home! Starting today, we will be migrating from GitHub to GitLab to better serve our community and improve our development workflow.
+
+## New Repository Location
+
+You can find our new repository at:
+
+[**GitLab: itishermann/10k-steps**](https://gitlab.com/itishermann/10k-steps.git)
+
+## What This Means for You
+
+- **Contributors**: Please update your remote URLs to point to the new GitLab repository.
+- **Users**: If you have cloned the repository, make sure to update your local clone to the new URL.
+- **Issues and Pull Requests**: We will be transferring open issues and pull requests to the new repository. Please bear with us during this transition.
+
+## Why GitLab?
+
+GitLab offers a comprehensive suite of tools for version control, issue tracking, and CI/CD, all integrated into a single platform. This move will help us streamline our development process and provide a better experience for our contributors and users.
+
+## Thank You!
+
+We appreciate your support and understanding during this transition. If you have any questions or run into issues, please don't hesitate to reach out.
+
+Happy coding!
+
+---
+
+*Please note that the GitHub repository will be archived soon. Make sure to update your bookmarks and clone URLs accordingly.*
+
+---
 
 10K Step Path Generator is a fitness app that helps users achieve their daily walking goals by generating personalized looped walking routes. Using **OpenRouteService API**, it calculates paths tailored to your step length and visualizes them on an interactive **Leaflet map**. With support for **GPX downloads**, offline use, and persistent local storage, this app makes fitness simple and fun!
 
 ---
+
 
 ## **Table of Contents**
 1. [Features](#features)
